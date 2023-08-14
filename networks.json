@@ -1,0 +1,8 @@
+{
+  "mainnet": {
+    "OKP": {
+      "address": "0x55Fd95F322ED24705441806b73dD969558f5E9E5",
+      "startBlock": 0
+    }
+  }
+}
