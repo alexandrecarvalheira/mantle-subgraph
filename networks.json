@@ -4,5 +4,10 @@
       "address": "0x55Fd95F322ED24705441806b73dD969558f5E9E5",
       "startBlock": 0
     }
+  },
+  "mantleTestnet": {
+    "Contract": {
+      "address": "0x55Fd95F322ED24705441806b73dD969558f5E9E5"
+    }
   }
 }

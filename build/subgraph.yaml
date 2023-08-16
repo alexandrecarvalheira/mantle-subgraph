@@ -1,6 +1,6 @@
 specVersion: 0.0.5
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: OKP
@@ -18,11 +18,11 @@ dataSources:
         - Mint
       abis:
         - name: OKP
-          file: ./abis/DIAMOND-1-HARDHAT.json
+          file: OKP\abis\DIAMOND-1-HARDHAT.json
       eventHandlers:
         - event: CreateBasicMonster(indexed
             uint256,(uint256,uint256,uint256,uint256,uint256,string,string))
           handler: handleCreateBasicMonster
         - event: Mint(indexed uint256,indexed address,string,uint256)
           handler: handleMint
-      file: ./src/okp.ts
+      file: OKP\OKP.wasm
