@@ -175,7 +175,7 @@ dataSources:
           handler: handleCreateBasicCraft
         - event: BasicCraftEvent(indexed uint256,uint256,uint256)
           handler: handleBasicCraftEvent
-        - event: LevelUpPatch(indexed uint256,(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,string,string,bool,(uint256,uint256,uint256,uint256,uint256,uint256,uint256),uint256))
+        - event: LevelUpPatch(indexed uint256)
           handler: handleLevelUpPatch
         #   - event: OwnershipTransferred(indexed address,indexed address)
         #   handler: handleOwnershipTransferred

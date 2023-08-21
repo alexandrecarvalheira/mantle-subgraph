@@ -690,26 +690,93 @@ export function handleBasicCraftEvent(event: BasicCraftEvent): void {
 }
 
 export function handleLevelUpPatch(event: LevelUpPatchEvent): void {
+  const players = [
+    "1",
+    "1419",
+    "19",
+    "273",
+    "37",
+    "391",
+    "481",
+    "59",
+    "5902",
+    "778",
+    "1088",
+    "1475",
+    "257",
+    "321",
+    "331",
+    "7166",
+    "779",
+    "340",
+    "642",
+    "643",
+    "6904",
+    "1338",
+    "1423",
+    "1735",
+    "102",
+    "333",
+    "6907",
+    "72",
+    "1811",
+    "386",
+    "6884",
+    "526",
+    "6779",
+    "6857",
+    "6858",
+    "6859",
+    "6867",
+    "6872",
+    "6873",
+    "6874",
+    "6875",
+    "6876",
+    "714",
+    "160",
+    "313",
+    "629",
+    "99",
+    "886",
+    "177",
+    "345",
+    "158",
+    "427",
+    "236",
+    "433",
+    "43",
+    "1173",
+    "464",
+    "447",
+    "154",
+    "1681",
+    "938",
+    "76",
+    "1078",
+    "259",
+  ];
   let contract = OKP.bind(event.address);
-  let count = contract.playerCount();
-  let player;
-  for (let i = 1; i < count.toI32(); i++) {
-    let contractPlayer = contract.getPlayer(BigInt.fromI32(i));
-    if (contractPlayer.level >= BigInt.fromI32(1)) {
-      player = Player.load(i.toString());
+  let player: Player | null;
+  if (event.params.id.toString() == "99") {
+    for (let i = 0; i < players.length; i++) {
+      let contractPlayer = contract.getPlayer(BigInt.fromString(players[i]));
+      if (contractPlayer.level >= BigInt.fromI32(1)) {
+        player = Player.load(players[i]);
 
-      if (player) {
-        player.maxHealth = contractPlayer.health.toI32();
-        player.currentHealth = contractPlayer.currentHealth.toI32();
-        player.agility = contractPlayer.agility.toI32();
-        player.strength = contractPlayer.strength.toI32();
-        player.defense = contractPlayer.defense.toI32();
-        player.magic = contractPlayer.magic.toI32();
-        player.maxMana = contractPlayer.maxMana.toI32();
-        player.currentMana = contractPlayer.mana.toI32();
-        player.level = contractPlayer.level.toI32();
-        player.exp = contractPlayer.xp.toI32();
-        player.save();
+        if (player) {
+          player.maxHealth = contractPlayer.health.toI32();
+          player.currentHealth = contractPlayer.currentHealth.toI32();
+          player.agility = contractPlayer.agility.toI32();
+          player.strength = contractPlayer.strength.toI32();
+          player.defense = contractPlayer.defense.toI32();
+          player.magic = contractPlayer.magic.toI32();
+          player.maxMana = contractPlayer.maxMana.toI32();
+          player.currentMana = contractPlayer.mana.toI32();
+          player.level = contractPlayer.level.toI32();
+          player.exp = contractPlayer.xp.toI32();
+          player.save();
+        }
       }
     }
   }
