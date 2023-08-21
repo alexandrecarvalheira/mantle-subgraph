@@ -38,6 +38,7 @@ import {
   NameChange,
   Approval3,
   ApprovalForAll3,
+  LevelUp,
   Mint1,
   NameChange1,
   SentTransferRemote,
@@ -217,7 +218,8 @@ export function createLeaveBasicArenaEvent(
 export function createBasicEquipmentSchemaCreatedEvent(
   _basicEquipmentSchemaId: BigInt,
   _value: BigInt,
-  _uri: string
+  _uri: string,
+  _basicEQuipmentSchema: ethereum.Tuple
 ): BasicEquipmentSchemaCreated {
   let basicEquipmentSchemaCreatedEvent = changetype<
     BasicEquipmentSchemaCreated
@@ -236,6 +238,12 @@ export function createBasicEquipmentSchemaCreatedEvent(
   )
   basicEquipmentSchemaCreatedEvent.parameters.push(
     new ethereum.EventParam("_uri", ethereum.Value.fromString(_uri))
+  )
+  basicEquipmentSchemaCreatedEvent.parameters.push(
+    new ethereum.EventParam(
+      "_basicEQuipmentSchema",
+      ethereum.Value.fromTuple(_basicEQuipmentSchema)
+    )
   )
 
   return basicEquipmentSchemaCreatedEvent
@@ -702,7 +710,8 @@ export function createCreateBasicMonsterEvent(
 }
 
 export function createCreateMagicMonsterEvent(
-  _monsterId: BigInt
+  _monsterId: BigInt,
+  _magicMonster: ethereum.Tuple
 ): CreateMagicMonster {
   let createMagicMonsterEvent = changetype<CreateMagicMonster>(newMockEvent())
 
@@ -712,6 +721,12 @@ export function createCreateMagicMonsterEvent(
     new ethereum.EventParam(
       "_monsterId",
       ethereum.Value.fromUnsignedBigInt(_monsterId)
+    )
+  )
+  createMagicMonsterEvent.parameters.push(
+    new ethereum.EventParam(
+      "_magicMonster",
+      ethereum.Value.fromTuple(_magicMonster)
     )
   )
 
@@ -940,6 +955,24 @@ export function createApprovalForAll3Event(
   return approvalForAll3Event
 }
 
+export function createLevelUpEvent(_playerId: BigInt, _stat: BigInt): LevelUp {
+  let levelUpEvent = changetype<LevelUp>(newMockEvent())
+
+  levelUpEvent.parameters = new Array()
+
+  levelUpEvent.parameters.push(
+    new ethereum.EventParam(
+      "_playerId",
+      ethereum.Value.fromUnsignedBigInt(_playerId)
+    )
+  )
+  levelUpEvent.parameters.push(
+    new ethereum.EventParam("_stat", ethereum.Value.fromUnsignedBigInt(_stat))
+  )
+
+  return levelUpEvent
+}
+
 export function createMint1Event(
   id: BigInt,
   owner: Address,
@@ -1148,8 +1181,7 @@ export function createConsumeBasicPotionEvent(
 
 export function createCreateBasicPotionEvent(
   _basicPotionSchemaId: BigInt,
-  _value: BigInt,
-  _cost: BigInt
+  potionSchema: ethereum.Tuple
 ): CreateBasicPotion {
   let createBasicPotionEvent = changetype<CreateBasicPotion>(newMockEvent())
 
@@ -1162,10 +1194,10 @@ export function createCreateBasicPotionEvent(
     )
   )
   createBasicPotionEvent.parameters.push(
-    new ethereum.EventParam("_value", ethereum.Value.fromUnsignedBigInt(_value))
-  )
-  createBasicPotionEvent.parameters.push(
-    new ethereum.EventParam("_cost", ethereum.Value.fromUnsignedBigInt(_cost))
+    new ethereum.EventParam(
+      "potionSchema",
+      ethereum.Value.fromTuple(potionSchema)
+    )
   )
 
   return createBasicPotionEvent

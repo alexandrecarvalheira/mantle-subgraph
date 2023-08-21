@@ -92,6 +92,46 @@ export class CreateBasicArena__Params {
   get _basicArenaId(): BigInt {
     return this._event.parameters[0].value.toBigInt();
   }
+
+  get _basicArena(): CreateBasicArena_basicArenaStruct {
+    return changetype<CreateBasicArena_basicArenaStruct>(
+      this._event.parameters[1].value.toTuple()
+    );
+  }
+}
+
+export class CreateBasicArena_basicArenaStruct extends ethereum.Tuple {
+  get basicArenaId(): BigInt {
+    return this[0].toBigInt();
+  }
+
+  get cost(): BigInt {
+    return this[1].toBigInt();
+  }
+
+  get cooldown(): BigInt {
+    return this[2].toBigInt();
+  }
+
+  get hostId(): BigInt {
+    return this[3].toBigInt();
+  }
+
+  get open(): boolean {
+    return this[4].toBoolean();
+  }
+
+  get hostAddress(): Address {
+    return this[5].toAddress();
+  }
+
+  get name(): string {
+    return this[6].toString();
+  }
+
+  get url(): string {
+    return this[7].toString();
+  }
 }
 
 export class EnterBasicArena extends ethereum.Event {
@@ -138,6 +178,32 @@ export class LeaveBasicArena__Params {
   }
 }
 
+export class BasicCraftEvent extends ethereum.Event {
+  get params(): BasicCraftEvent__Params {
+    return new BasicCraftEvent__Params(this);
+  }
+}
+
+export class BasicCraftEvent__Params {
+  _event: BasicCraftEvent;
+
+  constructor(event: BasicCraftEvent) {
+    this._event = event;
+  }
+
+  get _playerId(): BigInt {
+    return this._event.parameters[0].value.toBigInt();
+  }
+
+  get _equipmentId(): BigInt {
+    return this._event.parameters[1].value.toBigInt();
+  }
+
+  get _craftId(): BigInt {
+    return this._event.parameters[2].value.toBigInt();
+  }
+}
+
 export class BasicEquipmentSchemaCreated extends ethereum.Event {
   get params(): BasicEquipmentSchemaCreated__Params {
     return new BasicEquipmentSchemaCreated__Params(this);
@@ -161,6 +227,96 @@ export class BasicEquipmentSchemaCreated__Params {
 
   get _uri(): string {
     return this._event.parameters[2].value.toString();
+  }
+
+  get _basicEQuipmentSchema(): BasicEquipmentSchemaCreated_basicEQuipmentSchemaStruct {
+    return changetype<BasicEquipmentSchemaCreated_basicEQuipmentSchemaStruct>(
+      this._event.parameters[3].value.toTuple()
+    );
+  }
+}
+
+export class BasicEquipmentSchemaCreated_basicEQuipmentSchemaStruct extends ethereum.Tuple {
+  get basicEquipmentSchemaId(): BigInt {
+    return this[0].toBigInt();
+  }
+
+  get slot(): BigInt {
+    return this[1].toBigInt();
+  }
+
+  get value(): BigInt {
+    return this[2].toBigInt();
+  }
+
+  get stat(): BigInt {
+    return this[3].toBigInt();
+  }
+
+  get cost(): BigInt {
+    return this[4].toBigInt();
+  }
+
+  get name(): string {
+    return this[5].toString();
+  }
+
+  get uri(): string {
+    return this[6].toString();
+  }
+}
+
+export class CreateBasicCraft extends ethereum.Event {
+  get params(): CreateBasicCraft__Params {
+    return new CreateBasicCraft__Params(this);
+  }
+}
+
+export class CreateBasicCraft__Params {
+  _event: CreateBasicCraft;
+
+  constructor(event: CreateBasicCraft) {
+    this._event = event;
+  }
+
+  get id(): BigInt {
+    return this._event.parameters[0].value.toBigInt();
+  }
+
+  get _basicCraft(): CreateBasicCraft_basicCraftStruct {
+    return changetype<CreateBasicCraft_basicCraftStruct>(
+      this._event.parameters[1].value.toTuple()
+    );
+  }
+}
+
+export class CreateBasicCraft_basicCraftStruct extends ethereum.Tuple {
+  get id(): BigInt {
+    return this[0].toBigInt();
+  }
+
+  get slot(): BigInt {
+    return this[1].toBigInt();
+  }
+
+  get value(): BigInt {
+    return this[2].toBigInt();
+  }
+
+  get cost(): BigInt {
+    return this[3].toBigInt();
+  }
+
+  get oldName(): string {
+    return this[4].toString();
+  }
+
+  get newName(): string {
+    return this[5].toString();
+  }
+
+  get uri(): string {
+    return this[6].toString();
   }
 }
 
@@ -702,6 +858,46 @@ export class CreateMagicMonster__Params {
   get _monsterId(): BigInt {
     return this._event.parameters[0].value.toBigInt();
   }
+
+  get _magicMonster(): CreateMagicMonster_magicMonsterStruct {
+    return changetype<CreateMagicMonster_magicMonsterStruct>(
+      this._event.parameters[1].value.toTuple()
+    );
+  }
+}
+
+export class CreateMagicMonster_magicMonsterStruct extends ethereum.Tuple {
+  get basicMonsterId(): BigInt {
+    return this[0].toBigInt();
+  }
+
+  get xpReward(): BigInt {
+    return this[1].toBigInt();
+  }
+
+  get damage(): BigInt {
+    return this[2].toBigInt();
+  }
+
+  get hp(): BigInt {
+    return this[3].toBigInt();
+  }
+
+  get cooldown(): BigInt {
+    return this[4].toBigInt();
+  }
+
+  get cost(): BigInt {
+    return this[5].toBigInt();
+  }
+
+  get name(): string {
+    return this[6].toString();
+  }
+
+  get uri(): string {
+    return this[7].toString();
+  }
 }
 
 export class DragonQuest extends ethereum.Event {
@@ -936,6 +1132,28 @@ export class ApprovalForAll3__Params {
   }
 }
 
+export class LevelUp extends ethereum.Event {
+  get params(): LevelUp__Params {
+    return new LevelUp__Params(this);
+  }
+}
+
+export class LevelUp__Params {
+  _event: LevelUp;
+
+  constructor(event: LevelUp) {
+    this._event = event;
+  }
+
+  get _playerId(): BigInt {
+    return this._event.parameters[0].value.toBigInt();
+  }
+
+  get _stat(): BigInt {
+    return this._event.parameters[1].value.toBigInt();
+  }
+}
+
 export class Mint1 extends ethereum.Event {
   get params(): Mint1__Params {
     return new Mint1__Params(this);
@@ -1128,6 +1346,142 @@ export class TrustedSignerChanged__Params {
   }
 }
 
+export class LevelUpPatch extends ethereum.Event {
+  get params(): LevelUpPatch__Params {
+    return new LevelUpPatch__Params(this);
+  }
+}
+
+export class LevelUpPatch__Params {
+  _event: LevelUpPatch;
+
+  constructor(event: LevelUpPatch) {
+    this._event = event;
+  }
+
+  get id(): BigInt {
+    return this._event.parameters[0].value.toBigInt();
+  }
+
+  get _player(): LevelUpPatch_playerStruct {
+    return changetype<LevelUpPatch_playerStruct>(
+      this._event.parameters[1].value.toTuple()
+    );
+  }
+}
+
+export class LevelUpPatch_playerStruct extends ethereum.Tuple {
+  get level(): BigInt {
+    return this[0].toBigInt();
+  }
+
+  get xp(): BigInt {
+    return this[1].toBigInt();
+  }
+
+  get status(): BigInt {
+    return this[2].toBigInt();
+  }
+
+  get strength(): BigInt {
+    return this[3].toBigInt();
+  }
+
+  get health(): BigInt {
+    return this[4].toBigInt();
+  }
+
+  get currentHealth(): BigInt {
+    return this[5].toBigInt();
+  }
+
+  get magic(): BigInt {
+    return this[6].toBigInt();
+  }
+
+  get mana(): BigInt {
+    return this[7].toBigInt();
+  }
+
+  get maxMana(): BigInt {
+    return this[8].toBigInt();
+  }
+
+  get agility(): BigInt {
+    return this[9].toBigInt();
+  }
+
+  get luck(): BigInt {
+    return this[10].toBigInt();
+  }
+
+  get wisdom(): BigInt {
+    return this[11].toBigInt();
+  }
+
+  get haki(): BigInt {
+    return this[12].toBigInt();
+  }
+
+  get perception(): BigInt {
+    return this[13].toBigInt();
+  }
+
+  get defense(): BigInt {
+    return this[14].toBigInt();
+  }
+
+  get name(): string {
+    return this[15].toString();
+  }
+
+  get uri(): string {
+    return this[16].toString();
+  }
+
+  get male(): boolean {
+    return this[17].toBoolean();
+  }
+
+  get slot(): LevelUpPatch_playerSlotStruct {
+    return changetype<LevelUpPatch_playerSlotStruct>(this[18].toTuple());
+  }
+
+  get playerClass(): BigInt {
+    return this[19].toBigInt();
+  }
+}
+
+export class LevelUpPatch_playerSlotStruct extends ethereum.Tuple {
+  get head(): BigInt {
+    return this[0].toBigInt();
+  }
+
+  get body(): BigInt {
+    return this[1].toBigInt();
+  }
+
+  get leftHand(): BigInt {
+    return this[2].toBigInt();
+  }
+
+  get rightHand(): BigInt {
+    return this[3].toBigInt();
+  }
+
+  get pants(): BigInt {
+    return this[4].toBigInt();
+  }
+
+  get feet(): BigInt {
+    return this[5].toBigInt();
+  }
+
+  get neck(): BigInt {
+    return this[6].toBigInt();
+  }
+}
+
 export class ConsumeBasicPotion extends ethereum.Event {
   get params(): ConsumeBasicPotion__Params {
     return new ConsumeBasicPotion__Params(this);
@@ -1167,12 +1521,36 @@ export class CreateBasicPotion__Params {
     return this._event.parameters[0].value.toBigInt();
   }
 
-  get _value(): BigInt {
-    return this._event.parameters[1].value.toBigInt();
+  get potionSchema(): CreateBasicPotionPotionSchemaStruct {
+    return changetype<CreateBasicPotionPotionSchemaStruct>(
+      this._event.parameters[1].value.toTuple()
+    );
+  }
+}
+
+export class CreateBasicPotionPotionSchemaStruct extends ethereum.Tuple {
+  get basicHealthPotionSchemaId(): BigInt {
+    return this[0].toBigInt();
   }
 
-  get _cost(): BigInt {
-    return this._event.parameters[2].value.toBigInt();
+  get value(): BigInt {
+    return this[1].toBigInt();
+  }
+
+  get cost(): BigInt {
+    return this[2].toBigInt();
+  }
+
+  get isHealth(): boolean {
+    return this[3].toBoolean();
+  }
+
+  get name(): string {
+    return this[4].toString();
+  }
+
+  get uri(): string {
+    return this[5].toString();
   }
 }
 
@@ -1955,6 +2333,36 @@ export class OKP__getBasicArenaResultValue0Struct extends ethereum.Tuple {
 
   get url(): string {
     return this[7].toString();
+  }
+}
+
+export class OKP__getBasicCraftResultValue0Struct extends ethereum.Tuple {
+  get id(): BigInt {
+    return this[0].toBigInt();
+  }
+
+  get slot(): BigInt {
+    return this[1].toBigInt();
+  }
+
+  get value(): BigInt {
+    return this[2].toBigInt();
+  }
+
+  get cost(): BigInt {
+    return this[3].toBigInt();
+  }
+
+  get oldName(): string {
+    return this[4].toString();
+  }
+
+  get newName(): string {
+    return this[5].toString();
+  }
+
+  get uri(): string {
+    return this[6].toString();
   }
 }
 
@@ -2799,6 +3207,61 @@ export class OKP extends ethereum.SmartContract {
     );
   }
 
+  getBasicArenaCooldowns(_playerId: BigInt, _basicArenaId: BigInt): BigInt {
+    let result = super.call(
+      "getBasicArenaCooldowns",
+      "getBasicArenaCooldowns(uint256,uint256):(uint256)",
+      [
+        ethereum.Value.fromUnsignedBigInt(_playerId),
+        ethereum.Value.fromUnsignedBigInt(_basicArenaId)
+      ]
+    );
+
+    return result[0].toBigInt();
+  }
+
+  try_getBasicArenaCooldowns(
+    _playerId: BigInt,
+    _basicArenaId: BigInt
+  ): ethereum.CallResult<BigInt> {
+    let result = super.tryCall(
+      "getBasicArenaCooldowns",
+      "getBasicArenaCooldowns(uint256,uint256):(uint256)",
+      [
+        ethereum.Value.fromUnsignedBigInt(_playerId),
+        ethereum.Value.fromUnsignedBigInt(_basicArenaId)
+      ]
+    );
+    if (result.reverted) {
+      return new ethereum.CallResult();
+    }
+    let value = result.value;
+    return ethereum.CallResult.fromValue(value[0].toBigInt());
+  }
+
+  getBasicArenaCount(): BigInt {
+    let result = super.call(
+      "getBasicArenaCount",
+      "getBasicArenaCount():(uint256)",
+      []
+    );
+
+    return result[0].toBigInt();
+  }
+
+  try_getBasicArenaCount(): ethereum.CallResult<BigInt> {
+    let result = super.tryCall(
+      "getBasicArenaCount",
+      "getBasicArenaCount():(uint256)",
+      []
+    );
+    if (result.reverted) {
+      return new ethereum.CallResult();
+    }
+    let value = result.value;
+    return ethereum.CallResult.fromValue(value[0].toBigInt());
+  }
+
   getTotalLosses(_playerId: BigInt): BigInt {
     let result = super.call(
       "getTotalLosses",
@@ -2835,6 +3298,58 @@ export class OKP extends ethereum.SmartContract {
       "getTotalWins",
       "getTotalWins(uint256):(uint256)",
       [ethereum.Value.fromUnsignedBigInt(_playerId)]
+    );
+    if (result.reverted) {
+      return new ethereum.CallResult();
+    }
+    let value = result.value;
+    return ethereum.CallResult.fromValue(value[0].toBigInt());
+  }
+
+  getBasicCraft(_basicCraftId: BigInt): OKP__getBasicCraftResultValue0Struct {
+    let result = super.call(
+      "getBasicCraft",
+      "getBasicCraft(uint256):((uint256,uint256,uint256,uint256,string,string,string))",
+      [ethereum.Value.fromUnsignedBigInt(_basicCraftId)]
+    );
+
+    return changetype<OKP__getBasicCraftResultValue0Struct>(
+      result[0].toTuple()
+    );
+  }
+
+  try_getBasicCraft(
+    _basicCraftId: BigInt
+  ): ethereum.CallResult<OKP__getBasicCraftResultValue0Struct> {
+    let result = super.tryCall(
+      "getBasicCraft",
+      "getBasicCraft(uint256):((uint256,uint256,uint256,uint256,string,string,string))",
+      [ethereum.Value.fromUnsignedBigInt(_basicCraftId)]
+    );
+    if (result.reverted) {
+      return new ethereum.CallResult();
+    }
+    let value = result.value;
+    return ethereum.CallResult.fromValue(
+      changetype<OKP__getBasicCraftResultValue0Struct>(value[0].toTuple())
+    );
+  }
+
+  getBasicCraftCount(): BigInt {
+    let result = super.call(
+      "getBasicCraftCount",
+      "getBasicCraftCount():(uint256)",
+      []
+    );
+
+    return result[0].toBigInt();
+  }
+
+  try_getBasicCraftCount(): ethereum.CallResult<BigInt> {
+    let result = super.tryCall(
+      "getBasicCraftCount",
+      "getBasicCraftCount():(uint256)",
+      []
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -5324,20 +5839,104 @@ export class LeaveBasicArenaCall__Outputs {
   }
 }
 
-export class _createBasicEquipmentCall extends ethereum.Call {
-  get inputs(): _createBasicEquipmentCall__Inputs {
-    return new _createBasicEquipmentCall__Inputs(this);
+export class BasicCraftCall extends ethereum.Call {
+  get inputs(): BasicCraftCall__Inputs {
+    return new BasicCraftCall__Inputs(this);
   }
 
-  get outputs(): _createBasicEquipmentCall__Outputs {
-    return new _createBasicEquipmentCall__Outputs(this);
+  get outputs(): BasicCraftCall__Outputs {
+    return new BasicCraftCall__Outputs(this);
   }
 }
 
-export class _createBasicEquipmentCall__Inputs {
-  _call: _createBasicEquipmentCall;
+export class BasicCraftCall__Inputs {
+  _call: BasicCraftCall;
 
-  constructor(call: _createBasicEquipmentCall) {
+  constructor(call: BasicCraftCall) {
+    this._call = call;
+  }
+
+  get _playerId(): BigInt {
+    return this._call.inputValues[0].value.toBigInt();
+  }
+
+  get _equipmentId(): BigInt {
+    return this._call.inputValues[1].value.toBigInt();
+  }
+
+  get _craftId(): BigInt {
+    return this._call.inputValues[2].value.toBigInt();
+  }
+}
+
+export class BasicCraftCall__Outputs {
+  _call: BasicCraftCall;
+
+  constructor(call: BasicCraftCall) {
+    this._call = call;
+  }
+}
+
+export class CreateBasicCraftCall extends ethereum.Call {
+  get inputs(): CreateBasicCraftCall__Inputs {
+    return new CreateBasicCraftCall__Inputs(this);
+  }
+
+  get outputs(): CreateBasicCraftCall__Outputs {
+    return new CreateBasicCraftCall__Outputs(this);
+  }
+}
+
+export class CreateBasicCraftCall__Inputs {
+  _call: CreateBasicCraftCall;
+
+  constructor(call: CreateBasicCraftCall) {
+    this._call = call;
+  }
+
+  get _equipmenSchematId(): BigInt {
+    return this._call.inputValues[0].value.toBigInt();
+  }
+
+  get _value(): BigInt {
+    return this._call.inputValues[1].value.toBigInt();
+  }
+
+  get _cost(): BigInt {
+    return this._call.inputValues[2].value.toBigInt();
+  }
+
+  get _newName(): string {
+    return this._call.inputValues[3].value.toString();
+  }
+
+  get _uri(): string {
+    return this._call.inputValues[4].value.toString();
+  }
+}
+
+export class CreateBasicCraftCall__Outputs {
+  _call: CreateBasicCraftCall;
+
+  constructor(call: CreateBasicCraftCall) {
+    this._call = call;
+  }
+}
+
+export class CreateBasicEquipmentCall extends ethereum.Call {
+  get inputs(): CreateBasicEquipmentCall__Inputs {
+    return new CreateBasicEquipmentCall__Inputs(this);
+  }
+
+  get outputs(): CreateBasicEquipmentCall__Outputs {
+    return new CreateBasicEquipmentCall__Outputs(this);
+  }
+}
+
+export class CreateBasicEquipmentCall__Inputs {
+  _call: CreateBasicEquipmentCall;
+
+  constructor(call: CreateBasicEquipmentCall) {
     this._call = call;
   }
 
@@ -5366,10 +5965,10 @@ export class _createBasicEquipmentCall__Inputs {
   }
 }
 
-export class _createBasicEquipmentCall__Outputs {
-  _call: _createBasicEquipmentCall;
+export class CreateBasicEquipmentCall__Outputs {
+  _call: CreateBasicEquipmentCall;
 
-  constructor(call: _createBasicEquipmentCall) {
+  constructor(call: CreateBasicEquipmentCall) {
     this._call = call;
   }
 }
@@ -5852,6 +6451,60 @@ export class CreateBasicMonsterCall__Outputs {
   _call: CreateBasicMonsterCall;
 
   constructor(call: CreateBasicMonsterCall) {
+    this._call = call;
+  }
+}
+
+export class CreateMagicMonsterCall extends ethereum.Call {
+  get inputs(): CreateMagicMonsterCall__Inputs {
+    return new CreateMagicMonsterCall__Inputs(this);
+  }
+
+  get outputs(): CreateMagicMonsterCall__Outputs {
+    return new CreateMagicMonsterCall__Outputs(this);
+  }
+}
+
+export class CreateMagicMonsterCall__Inputs {
+  _call: CreateMagicMonsterCall;
+
+  constructor(call: CreateMagicMonsterCall) {
+    this._call = call;
+  }
+
+  get _xpReward(): BigInt {
+    return this._call.inputValues[0].value.toBigInt();
+  }
+
+  get _damage(): BigInt {
+    return this._call.inputValues[1].value.toBigInt();
+  }
+
+  get _hp(): BigInt {
+    return this._call.inputValues[2].value.toBigInt();
+  }
+
+  get _cooldown(): BigInt {
+    return this._call.inputValues[3].value.toBigInt();
+  }
+
+  get _cost(): BigInt {
+    return this._call.inputValues[4].value.toBigInt();
+  }
+
+  get _name(): string {
+    return this._call.inputValues[5].value.toString();
+  }
+
+  get _uri(): string {
+    return this._call.inputValues[6].value.toString();
+  }
+}
+
+export class CreateMagicMonsterCall__Outputs {
+  _call: CreateMagicMonsterCall;
+
+  constructor(call: CreateMagicMonsterCall) {
     this._call = call;
   }
 }
@@ -6402,6 +7055,32 @@ export class EndQuestGoldCall__Outputs {
   }
 }
 
+export class GetGoldCall extends ethereum.Call {
+  get inputs(): GetGoldCall__Inputs {
+    return new GetGoldCall__Inputs(this);
+  }
+
+  get outputs(): GetGoldCall__Outputs {
+    return new GetGoldCall__Outputs(this);
+  }
+}
+
+export class GetGoldCall__Inputs {
+  _call: GetGoldCall;
+
+  constructor(call: GetGoldCall) {
+    this._call = call;
+  }
+}
+
+export class GetGoldCall__Outputs {
+  _call: GetGoldCall;
+
+  constructor(call: GetGoldCall) {
+    this._call = call;
+  }
+}
+
 export class StartQuestGemCall extends ethereum.Call {
   get inputs(): StartQuestGemCall__Inputs {
     return new StartQuestGemCall__Inputs(this);
@@ -6518,84 +7197,28 @@ export class TransferOwnership2Call__Outputs {
   }
 }
 
-export class ActiveScriptCall extends ethereum.Call {
-  get inputs(): ActiveScriptCall__Inputs {
-    return new ActiveScriptCall__Inputs(this);
+export class LevelUpScriptCall extends ethereum.Call {
+  get inputs(): LevelUpScriptCall__Inputs {
+    return new LevelUpScriptCall__Inputs(this);
   }
 
-  get outputs(): ActiveScriptCall__Outputs {
-    return new ActiveScriptCall__Outputs(this);
-  }
-}
-
-export class ActiveScriptCall__Inputs {
-  _call: ActiveScriptCall;
-
-  constructor(call: ActiveScriptCall) {
-    this._call = call;
-  }
-
-  get _playerId(): BigInt {
-    return this._call.inputValues[0].value.toBigInt();
+  get outputs(): LevelUpScriptCall__Outputs {
+    return new LevelUpScriptCall__Outputs(this);
   }
 }
 
-export class ActiveScriptCall__Outputs {
-  _call: ActiveScriptCall;
+export class LevelUpScriptCall__Inputs {
+  _call: LevelUpScriptCall;
 
-  constructor(call: ActiveScriptCall) {
+  constructor(call: LevelUpScriptCall) {
     this._call = call;
   }
 }
 
-export class OpenArenaCall extends ethereum.Call {
-  get inputs(): OpenArenaCall__Inputs {
-    return new OpenArenaCall__Inputs(this);
-  }
+export class LevelUpScriptCall__Outputs {
+  _call: LevelUpScriptCall;
 
-  get outputs(): OpenArenaCall__Outputs {
-    return new OpenArenaCall__Outputs(this);
-  }
-}
-
-export class OpenArenaCall__Inputs {
-  _call: OpenArenaCall;
-
-  constructor(call: OpenArenaCall) {
-    this._call = call;
-  }
-}
-
-export class OpenArenaCall__Outputs {
-  _call: OpenArenaCall;
-
-  constructor(call: OpenArenaCall) {
-    this._call = call;
-  }
-}
-
-export class UdpateDefeseCall extends ethereum.Call {
-  get inputs(): UdpateDefeseCall__Inputs {
-    return new UdpateDefeseCall__Inputs(this);
-  }
-
-  get outputs(): UdpateDefeseCall__Outputs {
-    return new UdpateDefeseCall__Outputs(this);
-  }
-}
-
-export class UdpateDefeseCall__Inputs {
-  _call: UdpateDefeseCall;
-
-  constructor(call: UdpateDefeseCall) {
-    this._call = call;
-  }
-}
-
-export class UdpateDefeseCall__Outputs {
-  _call: UdpateDefeseCall;
-
-  constructor(call: UdpateDefeseCall) {
+  constructor(call: LevelUpScriptCall) {
     this._call = call;
   }
 }

@@ -1056,6 +1056,54 @@
           "internalType": "uint256",
           "name": "_basicArenaId",
           "type": "uint256"
+        },
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "basicArenaId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "cost",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "cooldown",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "hostId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "open",
+              "type": "bool"
+            },
+            {
+              "internalType": "address payable",
+              "name": "hostAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "url",
+              "type": "string"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct BasicArena",
+          "name": "_basicArena",
+          "type": "tuple"
         }
       ],
       "name": "CreateBasicArena",
@@ -1230,6 +1278,43 @@
           "internalType": "uint256",
           "name": "_playerId",
           "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_basicArenaId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getBasicArenaCooldowns",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getBasicArenaCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_playerId",
+          "type": "uint256"
         }
       ],
       "name": "getTotalLosses",
@@ -1286,6 +1371,31 @@
         {
           "indexed": true,
           "internalType": "uint256",
+          "name": "_playerId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_equipmentId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_craftId",
+          "type": "uint256"
+        }
+      ],
+      "name": "BasicCraftEvent",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
           "name": "_basicEquipmentSchemaId",
           "type": "uint256"
         },
@@ -1300,9 +1410,108 @@
           "internalType": "string",
           "name": "_uri",
           "type": "string"
+        },
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "basicEquipmentSchemaId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "slot",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "stat",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "cost",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "uri",
+              "type": "string"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct BasicEquipmentSchema",
+          "name": "_basicEQuipmentSchema",
+          "type": "tuple"
         }
       ],
       "name": "BasicEquipmentSchemaCreated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "slot",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "cost",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "oldName",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "newName",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "uri",
+              "type": "string"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct BasicCraft",
+          "name": "_basicCraft",
+          "type": "tuple"
+        }
+      ],
+      "name": "CreateBasicCraft",
       "type": "event"
     },
     {
@@ -1323,6 +1532,62 @@
       ],
       "name": "PurchaseBasicEquipment",
       "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_playerId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_equipmentId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_craftId",
+          "type": "uint256"
+        }
+      ],
+      "name": "basicCraft",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_equipmenSchematId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_cost",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "_newName",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_uri",
+          "type": "string"
+        }
+      ],
+      "name": "createBasicCraft",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
       "inputs": [
@@ -1357,9 +1622,78 @@
           "type": "string"
         }
       ],
-      "name": "_createBasicEquipment",
+      "name": "createBasicEquipment",
       "outputs": [],
       "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_basicCraftId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getBasicCraft",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "slot",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "cost",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "oldName",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "newName",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "uri",
+              "type": "string"
+            }
+          ],
+          "internalType": "struct BasicCraft",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getBasicCraftCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -2739,6 +3073,54 @@
           "internalType": "uint256",
           "name": "_monsterId",
           "type": "uint256"
+        },
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "basicMonsterId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "xpReward",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "damage",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "hp",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "cooldown",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "cost",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "uri",
+              "type": "string"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct MagicMonster",
+          "name": "_magicMonster",
+          "type": "tuple"
         }
       ],
       "name": "CreateMagicMonster",
@@ -2842,6 +3224,49 @@
         }
       ],
       "name": "createBasicMonster",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_xpReward",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_damage",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_hp",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_cooldown",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_cost",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "_name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_uri",
+          "type": "string"
+        }
+      ],
+      "name": "createMagicMonster",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -3441,6 +3866,25 @@
         }
       ],
       "name": "ApprovalForAll",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "_playerId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "_stat",
+          "type": "uint256"
+        }
+      ],
+      "name": "LevelUp",
       "type": "event"
     },
     {
@@ -4123,6 +4567,13 @@
       "type": "function"
     },
     {
+      "inputs": [],
+      "name": "getGold",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
       "inputs": [
         {
           "internalType": "address",
@@ -4317,28 +4768,166 @@
       "type": "function"
     },
     {
+      "anonymous": false,
       "inputs": [
         {
+          "indexed": true,
           "internalType": "uint256",
-          "name": "_playerId",
+          "name": "id",
           "type": "uint256"
+        },
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "level",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "xp",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "status",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "strength",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "health",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "currentHealth",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "magic",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "mana",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "maxMana",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "agility",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "luck",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "wisdom",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "haki",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "perception",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "defense",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "uri",
+              "type": "string"
+            },
+            {
+              "internalType": "bool",
+              "name": "male",
+              "type": "bool"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "uint256",
+                  "name": "head",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "body",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "leftHand",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "rightHand",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "pants",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "feet",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "neck",
+                  "type": "uint256"
+                }
+              ],
+              "internalType": "struct PlayerSlotLib.Slot",
+              "name": "slot",
+              "type": "tuple"
+            },
+            {
+              "internalType": "uint256",
+              "name": "playerClass",
+              "type": "uint256"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct PlayerSlotLib.Player",
+          "name": "_player",
+          "type": "tuple"
         }
       ],
-      "name": "activeScript",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
+      "name": "LevelUpPatch",
+      "type": "event"
     },
     {
       "inputs": [],
-      "name": "openArena",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "udpateDefese",
+      "name": "levelUpScript",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -4372,16 +4961,42 @@
           "type": "uint256"
         },
         {
-          "indexed": true,
-          "internalType": "uint256",
-          "name": "_value",
-          "type": "uint256"
-        },
-        {
-          "indexed": true,
-          "internalType": "uint256",
-          "name": "_cost",
-          "type": "uint256"
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "basicHealthPotionSchemaId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "cost",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isHealth",
+              "type": "bool"
+            },
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "uri",
+              "type": "string"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct BasicPotionSchema",
+          "name": "potionSchema",
+          "type": "tuple"
         }
       ],
       "name": "CreateBasicPotion",
